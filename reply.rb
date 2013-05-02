@@ -52,7 +52,7 @@ class Reply
   end
 
   def question
-    Reply.find_by_question_id(subject_id)
+    Question.find_by_id(subject_id)
   end
 
   def parent_reply
