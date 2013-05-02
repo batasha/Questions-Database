@@ -24,11 +24,9 @@ class QuestionFollower
     query = <<-SQL
       SELECT u.*
         FROM question_followers qf
-        JOIN questions q
-          ON qf.question_id = q.id
         JOIN users u
           ON qf.user_id = u.id
-       WHERE q.id = ?
+       WHERE qf.question_id = ?
     SQL
 
     QuestionsDatabase.instance.execute(query, question_id).map do |result|
@@ -42,9 +40,7 @@ class QuestionFollower
         FROM question_followers qf
         JOIN questions q
           ON qf.question_id = q.id
-        JOIN users u
-          ON qf.user_id = u.id
-       WHERE u.id = ?
+       WHERE qf.user_id = ?
     SQL
 
     QuestionsDatabase.instance.execute(query, user_id).map do |result|
@@ -74,11 +70,9 @@ class QuestionLike
     query = <<-SQL
       SELECT u.*
         FROM question_likes ql
-        JOIN questions q
-          ON ql.question_id = q.id
         JOIN users u
           ON ql.user_id = u.id
-       WHERE q.id = ?
+       WHERE ql.question_id = ?
     SQL
 
     QuestionsDatabase.instance.execute(query, question_id).map do |result|
@@ -102,9 +96,7 @@ class QuestionLike
         FROM question_likes ql
         JOIN questions q
           ON ql.question_id = q.id
-        JOIN users u
-          ON ql.user_id = u.id
-       WHERE u.id = ?
+       WHERE ql.user_id = ?
     SQL
 
     QuestionsDatabase.instance.execute(query, user_id).map do |result|
