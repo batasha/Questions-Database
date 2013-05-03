@@ -1,10 +1,14 @@
 require_relative 'questions_database'
 require_relative 'save'
 
-class User
+class User < Model
   include Saveable
 
   TABLE_NAME = "users"
+
+  def table_name
+    TABLE_NAME
+  end
 
   def self.find_by_id(id)
     query = <<-SQL

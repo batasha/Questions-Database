@@ -1,20 +1,14 @@
 require_relative 'questions_database'
 require_relative 'save'
+require_relative 'model'
 
-class Question
-  include Saveable
+class Question < Model
+  #include Saveable
 
   TABLE_NAME = "questions"
 
-  def self.find_by_id(id)
-    query = <<-SQL
-      SELECT *
-        FROM questions
-       WHERE id = ?
-    SQL
-
-    Question.new(QuestionsDatabase.instance.execute(query, id).first)
-
+  def self.table_name
+    TABLE_NAME
   end
 
   def self.find_by_title(title)
