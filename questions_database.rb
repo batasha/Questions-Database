@@ -1,11 +1,11 @@
 require 'singleton'
 require 'sqlite3'
 
-class Object
-  def instance_variables_hash
-    Hash[instance_variables.map { |name| [name.to_s[1..-1].to_sym, instance_variable_get(name)] }]
-  end
-end
+# class Object
+#   def instance_variables_hash
+#     Hash[instance_variables.map { |name| [name.to_s[1..-1].to_sym, instance_variable_get(name)] }]
+#   end
+# end
 
 class QuestionsDatabase < SQLite3::Database
   include Singleton

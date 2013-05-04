@@ -42,8 +42,7 @@ class Question < Model
     QuestionLike.most_liked_questions(n)
   end
 
-  attr_reader :id, :author_id
-  attr_accessor :title, :body
+  Question.attr_accessible("id", "author_id", "title", "body")
 
   def initialize(options = {})
     options.each { |col, value| instance_variable_set("@" + col, value) }
@@ -68,4 +67,7 @@ class Question < Model
   def num_likes
     QuestionLike.num_likes_for_question_id(id)
   end
+
+  protected
+
 end
